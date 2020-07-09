@@ -7,7 +7,6 @@ RSpec.describe "When I visit the student index page" do
   end
 
   it "can diplay a list of all student" do
-
     visit "/students"
 
     expect(page).to have_content(@student_1.name)
@@ -20,17 +19,14 @@ RSpec.describe "When I visit the student index page" do
   end
 
   it "displays the average student age" do
-
     visit "/students"
-
     expect(page).to have_content(26.5)
   end
 
   it "alphabetizes all the students by name" do
+    string = "#{@student_2.name} #{@student_2.age} #{@student_2.house} #{@student_1.name} #{@student_1.age} #{@student_1.house}"
 
     visit "/students"
-
-    expect(page).to have_content(@student_2.name)
-    expect(page).to have_content(@student_1.name)
+    expect(page).to have_content(string)
   end
 end
